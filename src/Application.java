@@ -16,6 +16,7 @@ class AgendaGUI {
     private JTextField nameField;
     private JTextField emailField;
     private JTextField phoneField;
+    private JTextField removeIndexField;
     private JTextArea outputArea;
 
     public AgendaGUI(Agenda agenda) {
@@ -23,11 +24,11 @@ class AgendaGUI {
 
         frame = new JFrame("Agenda");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 400);
+        frame.setSize(400, 500);
         frame.setLayout(new BorderLayout());
 
         JPanel inputPanel = new JPanel();
-        inputPanel.setLayout(new GridLayout(4, 2));
+        inputPanel.setLayout(new GridLayout(5, 2));
 
         inputPanel.add(new JLabel("Nome:"));
         nameField = new JTextField();
@@ -58,6 +59,25 @@ class AgendaGUI {
             }
         });
         inputPanel.add(addButton);
+
+        inputPanel.add(new JLabel("Índice para Remover:"));
+        removeIndexField = new JTextField();
+        inputPanel.add(removeIndexField);
+
+        JButton removeButton = new JButton("Remover");
+        removeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    int index = Integer.parseInt(removeIndexField.getText());
+                    agenda.remover(index);
+                    atualizarLista();
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(frame, "Índice inválido!");
+                }
+            }
+        });
+        inputPanel.add(removeButton);
 
         outputArea = new JTextArea();
         outputArea.setEditable(false);
