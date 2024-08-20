@@ -99,7 +99,7 @@ class AgendaGUI {
 }
 
 class Agenda {
-    private final String[][] contatos = new String[100][3];
+    private final String[][] contatos = new String[1][3];
 
     public void adicionar(String nome, String email, String telefone) {
         int indice = buscarNovoIndice();
@@ -122,6 +122,7 @@ class Agenda {
     }
 
     public void remover(int contato) {
+        contato--;
         if (contato < 0 || contato >= contatos.length || contatos[contato][0] == null) {
             System.out.println("Índice fora dos limites do array ou não existe");
             return;
@@ -151,7 +152,7 @@ class Agenda {
         String[] lista = new String[contatos.length];
         for (int i = 0; i < contatos.length; i++) {
             if (contatos[i][0] != null) {
-                lista[i] = i + ": " + contatos[i][0] + " - " + contatos[i][2];
+                lista[i] = i + 1 + ": " + contatos[i][0] + " - " + contatos[i][1] + " - " + contatos[i][2];
             }
         }
         return lista;
