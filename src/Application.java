@@ -24,7 +24,7 @@ class AgendaGUI {
 
         frame = new JFrame("Agenda");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 500);
+        frame.setSize(401, 500);
         frame.setLayout(new BorderLayout());
 
         JPanel inputPanel = new JPanel();
