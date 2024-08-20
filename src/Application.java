@@ -124,7 +124,7 @@ class Agenda {
     public void remover(int contato) {
         contato--;
         if (contato < 0 || contato >= contatos.length || contatos[contato][0] == null) {
-            System.out.println("Índice fora dos limites do array ou não existe");
+            System.out.println("Índice fora dos limites do arrays ou não existe");
             return;
         }
 
